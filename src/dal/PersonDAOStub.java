@@ -1,9 +1,3 @@
-/*Stub Purpose:
-	- Not want to test DAL, rather only BAL
-	- DAL might not be accessible
-	- DAL Testing might be someone other's responsibility
-	- It may use Extra Resources, Time consuming. (Data Query)*/
-
 package dal;
 
 import java.util.ArrayList;
@@ -11,28 +5,34 @@ import java.util.Hashtable;
 
 import to.PersonTO;
 
-public class PersonDAOStub implements IDAL {
+public class PersonDAOStub implements IDAL{
 
-	private Hashtable<Integer, PersonTO> db;
+	private Hashtable<Integer, PersonTO> table;
 	
 	public PersonDAOStub() {
-		super();
-		db = new Hashtable<Integer, PersonTO>();
-		db.put(1, new PersonTO(1, "Shah Jahan", -1, -1));
-		db.put(2, new PersonTO(2, "Mumtaz Mahal", -1, -1));
-		db.put(3, new PersonTO(3, "Aurangzeb", 1, 2));
-		db.put(4, new PersonTO(4, "Dara Shikoh", 1, 2));
+		table = new  Hashtable<Integer, PersonTO>();
+		table.put(1,new PersonTO(1, "Talha",-1,-1));
+		table.put(2,new PersonTO(2, "Farhan",-1,-1));
+		
+		table.put(3,new PersonTO(3, "Zain",1,2));
+		table.put(4,new PersonTO(4, "Waseem",1,2));
+		
+		table.put(5,new PersonTO(4, "Sajawal",1,-2));
+		table.put(6,new PersonTO(4, "Akif",1,1));
+		
+		table.put(7,new PersonTO(4, "Mujtaba",2,-1));
+		table.put(8,new PersonTO(4, "Waleed",-1,-1));
 	}
 	
 	@Override
 	public PersonTO getPerson(int cnic) {
-		// it is getting person from hash table
-		return db.get(cnic);
+		// TODO Auto-generated method stub
+		return table.get(cnic);
 	}
 
 	@Override
-	public ArrayList<PersonTO> getData(String Name) {
-		
+	public ArrayList<PersonTO> getMatchinPersons(String name) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -1,30 +1,18 @@
 package to;
 
 public class PersonTO {
-	public PersonTO() {
-		this.setCnic(0);
-		this.setName("");
-		this.setMother(0);
-		this.setFather(0);
-	}
-	public PersonTO(int cnic, String name, int father, int mother) {
-		this.cnic= cnic;
-		this.name = name;
-		this.father = father;
-		this.mother = mother;
-	}
-	public PersonTO(PersonTO obj)
-	{
-		this.setCnic(obj.getCnic());
-		this.setName(obj.getName());
-		this.setMother(obj.getMother());
-		this.setFather(obj.getFather());
-	}
 	public int getCnic() {
 		return cnic;
 	}
 	public void setCnic(int cnic) {
 		this.cnic = cnic;
+	}
+	public PersonTO(int cnic, String name, int father, int mother) {
+		super();
+		this.cnic = cnic;
+		this.name = name;
+		this.father = father;
+		this.mother = mother;
 	}
 	public String getName() {
 		return name;

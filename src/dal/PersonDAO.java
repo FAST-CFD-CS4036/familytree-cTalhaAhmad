@@ -6,11 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-//import java.util.List;
 
 import to.PersonTO;
 
-public class PersonDAO implements IDAL{
+public class PersonDAO implements IDAL {
 	private Connection con;
 	
 	public PersonDAO() throws SQLException {
@@ -19,14 +18,12 @@ public class PersonDAO implements IDAL{
 		String password = "";
 		con = DriverManager.getConnection(url, user, password);
 	}
-	public PersonDAO(Connection con)	// Dependency Injection
-	{
+	public PersonDAO(Connection con) {
 		this.con = con;
 	}
 	
-	@Override
 	public PersonTO getPerson(int cnic) {
-		PersonTO person = new PersonTO();
+		PersonTO person = new PersonTO(0, null, 0, 0);
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM `citizen` WHERE `cnic` = ?");
 			ps.setInt(1, cnic);
@@ -44,27 +41,9 @@ public class PersonDAO implements IDAL{
 		}
 		return person;
 	}
-	
 	@Override
-	public ArrayList<PersonTO> getData(String name) {
-		ArrayList<PersonTO> data = new ArrayList<PersonTO>();
-		PersonTO person = new PersonTO();
-		try {
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM `citizen` WHERE `name` = ?");
-			ps.setString(1, name);
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				person.setCnic(rs.getInt("cnic"));
-				person.setName(rs.getString("name"));
-				person.setFather(rs.getInt("father"));
-				person.setMother(rs.getInt("mother"));
-				data.add(new PersonTO(person));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return data;
+	public ArrayList<PersonTO> getMatchinPersons(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
